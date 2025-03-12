@@ -18,7 +18,7 @@ function ForecastDays() {
         const response = await axios.get(
           `http://api.weatherapi.com/v1/forecast.json?key=75239263496d44f188b103640250201&q=${city}&days=5&aqi=no&alerts=no`
         );
-        setWeather(response.data.forecast.forecastday); // Correct property for forecast data
+        setWeather(response.data.forecast.forecastday); 
       } catch (error) {
         console.error("Error fetching forecast data:", error);
       }
