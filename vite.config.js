@@ -9,9 +9,9 @@ export default defineConfig({
     tailwindcss()
   ],
   test: {
-    environment: 'jsdom', // هذا مهم لاختبار المكونات
-    globals: true, // لجعل expect() يعمل بدون import
-    setupFiles: './src/setupTests.js', // لتشغيل إعدادات الاختبار قبل كل اختبار
+    environment: 'jsdom', 
+    globals: true,
+    setupFiles: './src/setupTests.js', 
   },
   server:{
 port:3000
