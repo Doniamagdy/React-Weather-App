@@ -16,9 +16,13 @@ function ForecastDays() {
     async function getData() {
       try {
         const response = await axios.get(
-          `https://api.weatherapi.com/v1/forecast.json?key=75239263496d44f188b103640250201&q=${city}&days=5&aqi=no&alerts=no`
+          // `https://api.weatherapi.com/v1/forecast.json?key=75239263496d44f188b103640250201&q=${city}&days=5&aqi=no&alerts=no`
+          `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/next3days?unitGroup=metric&include=days&key=RMVSBPV3PEWQQGTKJV2HJEZYC`
         );
-        setWeather(response.data.forecast.forecastday); 
+        // console.log(response)
+       setWeather(response.data.days); 
+       console.log(response.data.days)
+
       } catch (error) {
         console.error("Error fetching forecast data:", error);
       }
@@ -45,10 +49,10 @@ function ForecastDays() {
           weather.map((item, index) => (
             <div key={index}>
               <div className="card shadow p-4 my-3 bg-body rounded text-center">
-                <h3>{item.date}</h3>
-                <h6>Min: {item.day.mintemp_c}°C</h6>
-                <h6>Max: {item.day.maxtemp_c}°C</h6>
-                <p>{item.day.condition.text}</p>
+                <h3>{item.datetime}</h3>
+                <h6>Min: {item.tempmax}°C</h6>
+                <h6>Max: {item.tempmin}°C</h6>
+                <p>{item.temp}</p>
               </div>
             </div>
           ))
@@ -58,10 +62,12 @@ function ForecastDays() {
 
           </div>
         )}
-      </div>
+      </div> 
     </>
   );
 }
 
 export default ForecastDays;
+
+
 
